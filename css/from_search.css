@@ -10,7 +10,7 @@
 .form-row {
   display: flex;
   flex-wrap: wrap; /* чтобы на мобильных переносились */
-  gap: 10px;
+  gap: 3px;
   align-items: flex-start;
   margin-top: 20px;
 }
