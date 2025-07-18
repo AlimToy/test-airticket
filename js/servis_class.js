@@ -5,7 +5,7 @@ let counts = {
 };
 
 function toggleDropdown() {
-  const menu = document.getElementById('passengerMenu');
+  const menu = document.getElementById('passengers');
   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
@@ -24,7 +24,7 @@ function updateSummary() {
 
 // Закрыть выпадашку при клике вне её
 window.onclick = function(e) {
-  const menu = document.getElementById('passengerMenu');
+  const menu = document.getElementById('passengs');
   if (!e.target.closest('.dropdown')) {
     menu.style.display = 'none';
   }
