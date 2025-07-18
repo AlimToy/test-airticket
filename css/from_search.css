@@ -7,6 +7,13 @@
   background: rgba(0, 0, 0, 0.50);
 }
 
+#fromSuggestions ul,
+#toSuggestions ul {
+position: absolute; 
+background: white; 
+border: 1px solid #ccc
+}
+
 .form-group {
   width: 200px;
 
