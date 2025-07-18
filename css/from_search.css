@@ -1,0 +1,41 @@
+.bg_search {
+  width: 1200px;
+  height: 100px;
+  left: 25px;
+  top: 20px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.50);
+}
+
+.form-group {
+  width: 200px;
+
+}
+
+#flightSearchForm {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0;
+  gap: 5px;
+}
+
+.form-group input {
+  padding: 10px 10px;
+
+}
+
+.btn {
+    width: 130px;
+    padding: 10px 10px;
+    background-color: #00bbff;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
