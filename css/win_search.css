@@ -1,0 +1,133 @@
+       body {
+            font-family: Roboto, sans-serif;
+            margin: 20px;
+            max-width: 200px;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .dropdown-btn {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            padding: 10px 0;
+        }
+        
+        .passenger-section, .class-section {
+            padding: 0 15px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .passenger-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .passenger-label {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .passenger-age {
+            font-size: 12px;
+            color: #999;
+            margin-top: 2px;
+        }
+        
+        .counter-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .counter-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+        }
+        
+        .counter-value {
+            margin: 0 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .class-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        
+        .class-option input {
+            margin-right: 10px;
+        }
+        
+        .class-label {
+            font-size: 14px;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .arrow {
+            transition: transform 0.3s;
+        }
+        
+        .rotate {
+            transform: rotate(180deg);
+        }
+        
+        .passenger-summary {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #666;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 10px 0;
+        }

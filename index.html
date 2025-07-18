@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css"/> 
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/from_search.css"/>
-    <link rel="stylesheet" href="bootstrap-css/">
+    <link rel="stylesheet" href="css/win_search.css"/>
     <title>Авиабилет</title>
   </head>
 
@@ -32,6 +32,7 @@
       </div>
   </header> 
   <!-- header nav end--> 
+  
   <main class="main">
   <div class="container">
     <div class="search-form">
@@ -59,9 +60,77 @@
             <input type="text" id="returnDate" name="returnDate" class="form-control datepicker" placeholder="Обратно" required>
           </div>
         
-          <div class="form-group">
-            <input type="number" id="passengers" name="passengers" class="form-control" placeholder="Кол.чел." min="1" max="10" required>
-          </div>
+          <!-- ------------------ Это выпадающий окно выбора пасс. и класс ------------------ -->
+            <div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropdown-btn">
+        <div>
+            <div>1 пассажир • Эконом</div>
+            <div class="passenger-summary">1 взрослый</div>
+        </div>
+        <span class="arrow">▼</span>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+        <div class="passenger-section">
+            <div class="section-title">Пассажиры</div>
+            <div class="passenger-counter">
+                <div>
+                    <div class="passenger-label">Взрослые</div>
+                    <div class="passenger-age">12 лет и старше</div>
+                </div>
+                <div class="counter-controls">
+                    <div class="counter-btn" onclick="changePassengerCount(-1, 'adults')">-</div>
+                    <div class="counter-value" id="adults-count">1</div>
+                    <div class="counter-btn" onclick="changePassengerCount(1, 'adults')">+</div>
+                </div>
+            </div>
+            <div class="passenger-counter">
+                <div>
+                    <div class="passenger-label">Дети</div>
+                    <div class="passenger-age">от 2 до 11 лет</div>
+                </div>
+                <div class="counter-controls">
+                    <div class="counter-btn" onclick="changePassengerCount(-1, 'children')">-</div>
+                    <div class="counter-value" id="children-count">0</div>
+                    <div class="counter-btn" onclick="changePassengerCount(1, 'children')">+</div>
+                </div>
+            </div>
+            <div class="passenger-counter">
+                <div>
+                    <div class="passenger-label">Младенцы</div>
+                    <div class="passenger-age">Младше 2 лет</div>
+                </div>
+                <div class="counter-controls">
+                    <div class="counter-btn" onclick="changePassengerCount(-1, 'infants')">-</div>
+                    <div class="counter-value" id="infants-count">0</div>
+                    <div class="counter-btn" onclick="changePassengerCount(1, 'infants')">+</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="class-section">
+            <div class="section-title">Класс обслуживания</div>
+            <div class="class-option" onclick="selectClass('Эконом')">
+                <input type="radio" name="class" id="economy" checked>
+                <label class="class-label" for="economy">Эконом</label>
+            </div>
+            <div class="class-option" onclick="selectClass('Комфорт')">
+                <input type="radio" name="class" id="comfort">
+                <label class="class-label" for="comfort">Комфорт</label>
+            </div>
+            <div class="class-option" onclick="selectClass('Бизнес')">
+                <input type="radio" name="class" id="business">
+                <label class="class-label" for="business">Бизнес</label>
+            </div>
+            <div class="class-option" onclick="selectClass('Первый класс')">
+                <input type="radio" name="class" id="first-class">
+                <label class="class-label" for="first-class">Первый класс</label>
+            </div>
+        </div>
+    </div>
+</div>
+          <!-- ------------------ Это выпадающий окно выбора пасс. и класс конец------------------ -->
         
           <div class="form-group">
             <button type="submit" id="findTicketBtn" name="button" class="btn btn-primary">Найти билеты</button>
@@ -80,10 +149,13 @@
 <!-- script -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+
   <script src="js/calendar.js"></script>
   <script src="js/autocomplete.js"></script>
   <script src="js/servis_class.js"></script>
   <script src="js/script_search.js"></script>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 <!-- script end-->
 </body>
