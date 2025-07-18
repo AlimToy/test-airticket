@@ -44,11 +44,12 @@
 
 .suggestions li {
   padding: 10px;
+  color: rgba(0, 0, 0, 0.863);
   cursor: pointer;
 }
 
 .suggestions li:hover {
-  background-color: #f0f0f0;
+  background-color: #58aeff;
 }
 
 
