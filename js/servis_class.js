@@ -37,14 +37,14 @@
     
     function updateSummary() {
         const total = passengers.adults + passengers.children + passengers.infants;
-        let summaryText = `${passengers.adults} взросл${passengers.adults === 1 ? 'ый' : 'ых'}`;
+        let summaryText = `${passengers.adults} взр-${passengers.adults === 1 ? 'ый' : 'ых'}`;
         
         if (passengers.children > 0) {
-            summaryText += `, ${passengers.children} ребён${passengers.children === 1 ? 'ок' : passengers.children < 5 ? 'ка' : 'ок'}`;
+            summaryText += `, ${passengers.children} реб-${passengers.children === 1 ? 'ок' : passengers.children < 5 ? 'ка' : 'ок'}`;
         }
         
         if (passengers.infants > 0) {
-            summaryText += `, ${passengers.infants} младен${passengers.infants === 1 ? 'ец' : passengers.infants < 5 ? 'ца' : 'цев'}`;
+            summaryText += `, ${passengers.infants} мл-${passengers.infants === 1 ? 'ец' : passengers.infants < 5 ? 'ца' : 'цев'}`;
         }
         
         document.querySelector(".passenger-summary").textContent = summaryText;
