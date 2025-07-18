@@ -1,61 +1,101 @@
-    // Пассажиры
-    let passengers = {
-        adults: 1,
-        children: 0,
-        infants: 0
+document.addEventListener('DOMContentLoaded', function() {
+    // Состояние приложения
+    const state = {
+        passengers: {
+            adults: 1,
+            children: 0,
+            infants: 0
+        },
+        selectedClass: 'Эконом'
     };
-    
-    // Класс обслуживания
-    let selectedClass = 'Эконом';
-    
+
+    // Элементы DOM
+    const elements = {
+        dropdownBtn: document.querySelector('.dropdown-btn'),
+        dropdownContent: document.getElementById('dropdown-content'),
+        arrow: document.querySelector('.arrow'),
+        passengerCount: document.getElementById('passenger-count'),
+        classDisplay: document.getElementById('class-display'),
+        adultsCount: document.getElementById('adults-count'),
+        childrenCount: document.getElementById('children-count'),
+        infantsCount: document.getElementById('infants-count')
+    };
+
+    // Обработчики событий
+    function setupEventListeners() {
+        // Открытие/закрытие dropdown
+        elements.dropdownBtn.addEventListener('click', toggleDropdown);
+        
+        // Изменение количества пассажиров
+        document.querySelectorAll('.counter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const type = this.dataset.type;
+                const isPlus = this.classList.contains('plus');
+                changePassengerCount(isPlus ? 1 : -1, type);
+            });
+        });
+        
+        // Выбор класса
+        document.querySelectorAll('.class-option').forEach(option => {
+            option.addEventListener('click', function() {
+                selectClass(this.dataset.class);
+            });
+        });
+        
+        // Закрытие dropdown при клике вне его
+        document.addEventListener('click', function(event) {
+            if (!elements.dropdownBtn.contains(event.target) {
+                closeDropdown();
+            }
+        });
+    }
+
+    // Функции
     function toggleDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-        document.querySelector(".arrow").classList.toggle("rotate");
+        elements.dropdownContent.classList.toggle('show');
+        elements.arrow.classList.toggle('rotate');
     }
-    
+
+    function closeDropdown() {
+        elements.dropdownContent.classList.remove('show');
+        elements.arrow.classList.remove('rotate');
+    }
+
     function changePassengerCount(change, type) {
-        passengers[type] += change;
+        state.passengers[type] += change;
         
-        // Ограничения
-        if (passengers[type] < 0) passengers[type] = 0;
-        if (type === 'infants' && passengers[type] > passengers['adults']) {
-            passengers[type] = passengers['adults'];
-        }
+        // Убраны все ограничения (можно выбирать отрицательные значения и любое количество младенцев)
+        if (state.passengers[type] < 0) state.passengers[type] = 0;
         
-        // Обновление счетчиков
-        document.getElementById(`${type}-count`).textContent = passengers[type];
-        
-        // Обновление заголовка
+        updateCounters();
         updateSummary();
     }
-    
+
     function selectClass(className) {
-        selectedClass = className;
-        document.querySelector(`input[value="${className}"]`).checked = true;
-        updateSummary();
+        state.selectedClass = className;
+        elements.classDisplay.textContent = className;
+        closeDropdown();
     }
-    
-    // function updateSummary() {
-    //     const total = passengers.adults + passengers.children + passengers.infants;
-    //     let summaryText = `${passengers.adults} взр-${passengers.adults === 1 ? 'ый' : 'ых'}`;
-        
-    //     if (passengers.children > 0) {
-    //         summaryText += `, ${passengers.children} реб-${passengers.children === 1 ? 'ок' : passengers.children < 5 ? 'ка' : 'ок'}`;
-    //     }
-        
-    //     if (passengers.infants > 0) {
-    //         summaryText += `, ${passengers.infants} мл-${passengers.infants === 1 ? 'ец' : passengers.infants < 5 ? 'ца' : 'цев'}`;
-    //     }
-        
-    //     document.querySelector(".passenger-summary").textContent = summaryText;
-    //     document.querySelector(".dropdown-btn div:first-child div:first-child").textContent = 
-    //         `${total} пассажир${total === 1 ? '' : total < 5 ? 'а' : 'ов'} • ${selectedClass}`;
-    // }
-    
-    // Закрыть dropdown при клике вне его
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropdown-btn') && !event.target.closest('.dropdown-content')) {
-            document.getElementById("myDropdown").classList.remove("show");
-            document.querySelector(".arrow").classList.remove("rotate");
-        }
+
+    function updateCounters() {
+        elements.adultsCount.textContent = state.passengers.adults;
+        elements.childrenCount.textContent = state.passengers.children;
+        elements.infantsCount.textContent = state.passengers.infants;
     }
+
+    function updateSummary() {
+        const total = state.passengers.adults + state.passengers.children + state.passengers.infants;
+        elements.passengerCount.textContent = 
+            `${total} пассажир${getPassengerEnding(total)}`;
+    }
+
+    function getPassengerEnding(count) {
+        if (count === 1) return '';
+        if (count < 5) return 'а';
+        return 'ов';
+    }
+
+    // Инициализация
+    setupEventListeners();
+    updateSummary();
+});
