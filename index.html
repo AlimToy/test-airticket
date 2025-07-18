@@ -39,9 +39,11 @@
         <form id="flightSearchForm">
           <div class="form-group">
             <input type="text" id="departure" name="departure" class="form-control" placeholder="Откуда" required>
+            <ul id="fromSuggestions"></ul>
           </div>
           <div class="form-group">
-            <input type="text" id="arrival" name="arrival" class="form-control" placeholder="Куда" required>  
+            <input type="text" id="arrival" name="arrival" class="form-control" placeholder="Куда" required>
+            <ul id="toSuggestions"></ul>
           </div>
           <div class="form-group">  
             <input type="text" id="departureDate" name="departureDate" class="form-control datepicker" placeholder="Когда" required>      
