@@ -35,22 +35,22 @@
         updateSummary();
     }
     
-    function updateSummary() {
-        const total = passengers.adults + passengers.children + passengers.infants;
-        let summaryText = `${passengers.adults} взр-${passengers.adults === 1 ? 'ый' : 'ых'}`;
+    // function updateSummary() {
+    //     const total = passengers.adults + passengers.children + passengers.infants;
+    //     let summaryText = `${passengers.adults} взр-${passengers.adults === 1 ? 'ый' : 'ых'}`;
         
-        if (passengers.children > 0) {
-            summaryText += `, ${passengers.children} реб-${passengers.children === 1 ? 'ок' : passengers.children < 5 ? 'ка' : 'ок'}`;
-        }
+    //     if (passengers.children > 0) {
+    //         summaryText += `, ${passengers.children} реб-${passengers.children === 1 ? 'ок' : passengers.children < 5 ? 'ка' : 'ок'}`;
+    //     }
         
-        if (passengers.infants > 0) {
-            summaryText += `, ${passengers.infants} мл-${passengers.infants === 1 ? 'ец' : passengers.infants < 5 ? 'ца' : 'цев'}`;
-        }
+    //     if (passengers.infants > 0) {
+    //         summaryText += `, ${passengers.infants} мл-${passengers.infants === 1 ? 'ец' : passengers.infants < 5 ? 'ца' : 'цев'}`;
+    //     }
         
-        document.querySelector(".passenger-summary").textContent = summaryText;
-        document.querySelector(".dropdown-btn div:first-child div:first-child").textContent = 
-            `${total} пассажир${total === 1 ? '' : total < 5 ? 'а' : 'ов'} • ${selectedClass}`;
-    }
+    //     document.querySelector(".passenger-summary").textContent = summaryText;
+    //     document.querySelector(".dropdown-btn div:first-child div:first-child").textContent = 
+    //         `${total} пассажир${total === 1 ? '' : total < 5 ? 'а' : 'ов'} • ${selectedClass}`;
+    // }
     
     // Закрыть dropdown при клике вне его
     window.onclick = function(event) {
