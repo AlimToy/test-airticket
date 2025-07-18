@@ -36,38 +36,45 @@
   <div class="container">
     <div class="search-form">
       <h1>Поиск авиабилетов</h1>
-        <form id="flightSearchForm"> 
+      <form id="flightSearchForm"> 
+      
+        <!-- Горизонтальный ряд полей -->
+        <div class="form-row">
+        
           <div class="form-group">
-            <div class="form-group">
-              <input type="text" id="departure" name="departure" class="form-control" placeholder="Откуда" required>
-              <ul id="fromSuggestions" class="suggestions"></ul>
-            </div>
-
-            <div class="form-group">
-              <input type="text" id="arrival" name="arrival" class="form-control" placeholder="Куда" required>
-              <ul id="toSuggestions" class="suggestions"></ul>
-            </div>
-
+            <input type="text" id="departure" name="departure" class="form-control" placeholder="Откуда" required>
+            <ul id="fromSuggestions" class="suggestions"></ul>
+          </div>
+        
+          <div class="form-group">
+            <input type="text" id="arrival" name="arrival" class="form-control" placeholder="Куда" required>
+            <ul id="toSuggestions" class="suggestions"></ul>
+          </div>
+        
           <div class="form-group">  
             <input type="text" id="departureDate" name="departureDate" class="form-control datepicker" placeholder="Когда" required>      
           </div>
-
+        
           <div class="form-group">
             <input type="text" id="returnDate" name="returnDate" class="form-control datepicker" placeholder="Обратно" required>
           </div>
+        
           <div class="form-group">
             <input type="number" id="passengers" name="passengers" class="form-control" placeholder="Кол.чел." min="1" max="10" required>
           </div>
-          
+        
           <div class="form-group">
             <button type="submit" id="findTicketBtn" name="button" class="btn btn-primary">Найти билеты</button>
           </div>
-        </form>
-      <div id="searchResults" class="search-results"></div>
+        
+        </div>
+      </form>
+    
       <h2>Результаты поиска</h2>
+      <div id="searchResults" class="search-results"></div>
       <div id="errorMessage" class="error-message"></div>
-        <!-- Результаты поиска будут отображаться здесь -->
     </div>
+    
   </div>
   </main>
 <!-- script -->
