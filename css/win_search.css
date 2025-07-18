@@ -19,6 +19,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+    border: none !important;
 }
 
 .passenger-count {
