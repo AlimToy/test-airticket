@@ -7,50 +7,40 @@
   background: rgba(0, 0, 0, 0.50);
 }
 
-ul #fromSuggestions,
-ul #toSuggestions {
-position: absolute;
-background: white;
-border: 1px solid #ccc;
-color: black;
-max-width: 185px;
-}
+     .form-group {
+      position: relative;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
 
-/* .form-group {
-  width: 200px;
-} */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
 
-.form-group {
-  position: relative;
-  margin-bottom: 20px;
-  max-width: 200px;
-}
+    ul.suggestions {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      z-index: 999;
+      max-height: 200px;
+      overflow-y: auto;
+    }
 
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-}
-ul.suggestions {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  border-top: none;
-  z-index: 999;
-  max-height: 200px;
-  overflow-y: auto;
-}
-ul.suggestions li {
-  padding: 10px;
-  cursor: pointer;
-}
-ul.suggestions li:hover {
-  background-color: #f0f0f0;
-}
+    ul.suggestions li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    ul.suggestions li:hover {
+      background-color: #f0f0f0;
+    }
 
 #flightSearchForm {
   display:flex;
