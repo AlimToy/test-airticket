@@ -6,8 +6,7 @@
   position: absolute;
   background: rgba(0, 0, 0, 0.50);
 }
-
-
+/* --------------------- */
 .form-group {
   position: relative; /* Обязательно, иначе подсказки не будут позиционироваться правильно */
 }
@@ -39,6 +38,19 @@
 }
 
 
+/* --------------------- */
+#flightSearchForm {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0;
+  gap: 5px;
+}
+
+.form-group input {
+  padding: 10px 10px;
+
+}
 
 #flightSearchForm {
   display:flex;
