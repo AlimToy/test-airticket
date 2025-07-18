@@ -25,8 +25,11 @@ function updateSummary() {
 // Закрыть выпадашку при клике вне её
 window.onclick = function(e) {
   const menu = document.getElementById('passengs');
+  // Если клик был вне элемента с классом .dropdown
   if (!e.target.closest('.dropdown')) {
-    menu.style.display = 'none';
+    if (menu) {
+      menu.style.display = 'none';
+    }
   }
-}
+};
 
