@@ -7,22 +7,24 @@
   background: rgba(0, 0, 0, 0.50);
 }
 
-#fromSuggestions ul,
-#toSuggestions ul {
-position: absolute; 
-background: white; 
-border: 1px solid #ccc
+ul #fromSuggestions,
+ul #toSuggestions {
+position: absolute;
+background: white;
+border: 1px solid #ccc;
+color: black;
+max-width: 185px;
 }
 
 .form-group {
   width: 200px;
 }
 
-.form-group {
+/* .form-group {
   position: relative;
   margin-bottom: 20px;
   max-width: 400px;
-}
+} */
 
 input[type="text"] {
   width: 100%;
