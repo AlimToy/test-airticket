@@ -1,15 +1,21 @@
-  document.getElementById("findTicketBtn").addEventListener("click", function (e) {
-    e.preventDefault();
+async function fetchTickets() {
+  const response = await fetch('https://api.travelpayouts.com/v2/prices/latest?currency=rub&token=640b0a84dc83869915adca41653430cf');
+  const data = await response.json();
+  console.log(data); // Проверка данных
+  displayTickets(data.data); // Функция для отображения
+}
 
-    const origin = document.getElementById("departure").value.trim().toLowerCase();
-    const destination = document.getElementById("arrival").value.trim().toLowerCase();
-    const depart_date = document.getElementById("departureDate").value;
-    const return_date = document.getElementById("returnDate").value;
-    const passengers = document.getElementById("passengers").value;
-
-    // Подставь свой партнёрский домен (White Label) или ссылку
-    const affiliateMarker = "649243"; // например: 123456
-    const url = `https://www.aviasales.ru/search/${origin}${depart_date.replace(/-/g, '').slice(2, 6)}${destination}${return_date ? return_date.replace(/-/g, '').slice(2, 6) : ''}1?marker=${affiliateMarker}&adult_passengers=${passengers}`;
-
-    window.open(url, "_blank");
+function displayTickets(tickets) {
+  const container = document.getElementById('tickets-container');
+  tickets.forEach(ticket => {
+    container.innerHTML += `
+      <div class="ticket">
+        <p>${ticket.origin} → ${ticket.destination}</p>
+        <p>Цена: ${ticket.value} руб.</p>
+        <a href="https://aviasales.ru?marker=649243" target="_blank">Купить</a>
+      </div>
+    `;
   });
+}
+
+fetchTickets();
