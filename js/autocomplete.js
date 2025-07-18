@@ -1,60 +1,41 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let airports = [];
+async function fetchSuggestions(term) {
+  const response = await fetch(`https://autocomplete.travelpayouts.com/places2?term=${encodeURIComponent(term)}&locale=ru&types[]=city&types[]=airport`);
+  return await response.json();
+}
 
-  // Загружаем JSON
-  fetch("airports_500.json")
-    .then(response => response.json())
-    .then(data => {
-      airports = data;
+function setupAutocomplete(inputId, suggestionsId) {
+  const input = document.getElementById(inputId);
+  const suggestionBox = document.getElementById(suggestionsId);
 
-      // Подключаем автозаполнение к каждому полю
-      setupAutocomplete("fromInput", "fromSuggestions", airports);
-      setupAutocomplete("toInput", "toSuggestions", airports);
-    })
-    .catch(err => {
-      console.error("Ошибка загрузки JSON:", err);
-    });
+  input.addEventListener('input', async function () {
+    const term = input.value.trim();
+    suggestionBox.innerHTML = '';
+    if (term.length < 2) return;
 
-  function setupAutocomplete(inputId, suggestionsId, data) {
-    const input = document.getElementById(inputId);
-    const suggestions = document.getElementById(suggestionsId);
+    const results = await fetchSuggestions(term);
 
-    input.addEventListener("input", () => {
-      const query = input.value.trim().toLowerCase();
-      suggestions.innerHTML = "";
-
-      if (query.length < 2) return;
-
-        const matches = data.filter(airport =>
-          (airport.city || "").toLowerCase().includes(query) ||
-          (airport.airport || "").toLowerCase().includes(query) ||
-          (airport.iata || "").toLowerCase().includes(query) ||
-          (airport.country || "").toLowerCase().includes(query)
-        ).slice(0, 8);
-
-      if (matches.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = "Ничего не найдено";
-        suggestions.appendChild(li);
-        return;
-      }
-
-      matches.forEach(airport => {
-        const name = ` ${airport.city} (${airport.iata})`;
-        const li = document.createElement("li");
-        li.textContent = name;
-        li.addEventListener("click", () => {
-          input.value = name;
-          suggestions.innerHTML = "";
-        });
-        suggestions.appendChild(li);
+    results.forEach(place => {
+      const li = document.createElement('li');
+      li.textContent = `${place.name} (${place.code})`;
+      li.style.cursor = 'pointer';
+      li.style.padding = '5px';
+      li.addEventListener('click', () => {
+        input.value = `${place.name} (${place.code})`;
+        suggestionBox.innerHTML = '';
       });
+      suggestionBox.appendChild(li);
     });
+  });
 
-    document.addEventListener("click", e => {
-      if (!e.target.closest(`#${inputId}`)) {
-        suggestions.innerHTML = "";
-      }
-    });
-  }
-});
+  // Скрытие подсказок при клике вне
+  document.addEventListener('click', (e) => {
+    if (!suggestionBox.contains(e.target) && e.target !== input) {
+      suggestionBox.innerHTML = '';
+    }
+  });
+}
+
+// Запускаем автокомплит для обоих полей
+setupAutocomplete('departure', 'fromSuggestions');
+setupAutocomplete('arrival', 'toSuggestions');
+
