@@ -92,15 +92,14 @@
 }
 
 .class-option {
-    padding: 5px 0;
-    font-size: 15px;
+    padding: 8px 0;
     cursor: pointer;
 }
 
 .class-option:hover {
     background-color: #2facff;
     color: #fff;
-    padding: 0;
+
 }
 
 .show {
