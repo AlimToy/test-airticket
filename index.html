@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content="авиабилет, авиаперелет, путешествие, авиакомпания"/>
+    <meta name="author" content="Алим Расулов"/>
+    <meta name="description" content="Покупка авиабилетов онлайн. Удобный поиск и бронирование авиаперелетов по всему миру."/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.ico" type="image/png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css"/> 
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/from_search.css"/>
+    <link rel="stylesheet" href="bootstrap-css/">
+    <title>Авиабилет</title>
+  </head>
+
+<body>
+  <!-- header nav -->
+  <header сlass="header">
+      <div class="container">
+        <a href="#" class="log"><img src="img/logo.png" alt="Логотип" class="logo"></a>
+          <nav class="header-nav">
+              <ul class="nav-list" >
+                <li class="nav-item"><a class="active" href="/index.html">Главная</a></li>
+                <li class="nav-item"><a href="/about.html">О нас</a></li>
+                <li class="nav-item"><a href="/services.html">Услуги</a></li>
+                <li class="nav-item"><a href="/contact.html">Контакты</a></li>
+              </ul>
+            </nav> 
+      </div>
+  </header>
+  <!-- header nav end-->
+  <main class="main">
+  <div class="container">
+    <div class="search-form">
+      <h1>Поиск авиабилетов</h1>
+        <form id="flightSearchForm">
+          <div class="form-group">
+            <input type="text" id="departure" name="departure" class="form-control" placeholder="Откуда" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="arrival" name="arrival" class="form-control" placeholder="Куда" required>  
+          </div>
+          <div class="form-group">  
+            <input type="text" id="departureDate" name="departureDate" class="form-control datepicker" placeholder="Когда" required>      
+          </div>
+          <div class="form-group">
+            <input type="text" id="returnDate" name="returnDate" class="form-control datepicker" placeholder="Обратно" required>
+          </div>
+          <div class="form-group">
+            <input type="number" id="passengers" name="passengers" class="form-control" placeholder="Кол.чел." min="1" max="10" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="findTicketBtn" name="button" class="btn btn-primary">Найти билеты</button>
+          </div>
+        </form>
+      <div id="searchResults" class="search-results"></div>
+      <h2>Результаты поиска</h2>
+      <div id="errorMessage" class="error-message"></div>
+        <!-- Результаты поиска будут отображаться здесь -->
+    </div>
+  </div>
+  </main>
+<!-- script -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/autocomplete.js"></script>
+  <script src="js/servis_class.js"></script>
+  <script src="js/button_search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<!-- script end-->
+</body>
+</html>
+
+
