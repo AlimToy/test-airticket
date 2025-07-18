@@ -1,66 +1,15 @@
-document.getElementById("findTicketBtn").addEventListener("click", async function () {
-  const from = document.querySelector('#arrival')?.value.trim() || '';
-  const to = document.querySelector('#departure')?.value.trim() || '';
-  const departureDate = document.querySelector('#departureDate')?.value || '';
-  const returnDate = document.querySelector('#returnDate')?.value || '';
-  const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = ""; // очищаем старые результаты
+  document.getElementById("findTicketBtn").addEventListener("click", function (e) {
+    e.preventDefault();
 
-  if (!from || !to || !departureDate) {
-    alert("Пожалуйста, заполните поля: Откуда, Куда и Дата вылета.");
-    return;
-  }
+    const origin = document.getElementById("departure").value.trim().toLowerCase();
+    const destination = document.getElementById("arrival").value.trim().toLowerCase();
+    const depart_date = document.getElementById("departureDate").value;
+    const return_date = document.getElementById("returnDate").value;
+    const passengers = document.getElementById("passengers").value;
 
-  const API_KEY = "6d0b0a84dc83869915adca41653430cf";
-  const API_URL = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates";
+    // Подставь свой партнёрский домен (White Label) или ссылку
+    const affiliateMarker = "649243"; // например: 123456
+    const url = `https://www.aviasales.ru/search/${origin}${depart_date.replace(/-/g, '').slice(2, 6)}${destination}${return_date ? return_date.replace(/-/g, '').slice(2, 6) : ''}1?marker=${affiliateMarker}&adult_passengers=${passengers}`;
 
-  const params = new URLSearchParams({
-    origin: from,
-    destination: to,
-    departure_at: departureDate,
-    currency: "rub",
-    token: API_KEY
+    window.open(url, "_blank");
   });
-
-  if (returnDate) {
-    params.append("return_at", returnDate);
-  }
-
-  const url = `${API_URL}?${params.toString()}`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (!data.success || !data.data || Object.keys(data.data).length === 0) {
-      resultsDiv.innerHTML = "<p>Билеты не найдены.</p>";
-      return;
-    }
-
-    resultsDiv.innerHTML = "<h3>Найденные билеты:</h3>";
-
-    Object.entries(data.data).forEach(([date, ticket]) => {
-      const ticketDiv = document.createElement("div");
-      ticketDiv.style.border = "1px solid #ccc";
-      ticketDiv.style.padding = "10px";
-      ticketDiv.style.marginBottom = "10px";
-      ticketDiv.style.borderRadius = "8px";
-      ticketDiv.style.backgroundColor = "#f9f9f9";
-
-      ticketDiv.innerHTML = `
-        <strong>${from} → ${to}</strong><br>
-        Дата вылета: <strong>${date}</strong><br>
-        Цена: <strong>${ticket.price}₽</strong><br>
-        Авиакомпания: ${ticket.airline || "не указана"}<br>
-        Пересадки: ${ticket.transfers}<br>
-        Время вылета: ${ticket.departure_at}
-      `;
-
-      resultsDiv.appendChild(ticketDiv);
-    });
-
-  } catch (error) {
-    console.error("Ошибка при запросе:", error);
-    resultsDiv.innerHTML = "<p>Произошла ошибка при поиске билетов.</p>";
-  }
-});
