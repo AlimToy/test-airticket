@@ -61,16 +61,19 @@
           </div>
         
           <!-- ------------------ Это выпадающий окно выбора пасс. и класс ------------------ -->
-            <div class="dropdown">
-    <button onclick="toggleDropdown()" class="dropdown-btn">
-        <div>
-            <div>1 пассажир • Эконом</div>
-            <div class="passenger-summary">1 взрослый</div>
-        </div>
-        <span class="arrow">▼</span>
-    </button>
-    <div id="myDropdown" class="dropdown-content">
-        <div class="passenger-section">
+          <div class="dropdown">
+            
+              <button onclick="toggleDropdown()" class="dropdown-btn">
+                <div>
+                  <div>1 пассажир • Эконом</div>
+                  <div class="passenger-summary">1 взрослый</div>
+                </div>
+                  <span class="arrow">▼</span>
+              </button>
+
+        <div id="myDropdown" class="dropdown-content">
+          
+          <div class="passenger-section">
             <div class="section-title">Пассажиры</div>
             <div class="passenger-counter">
                 <div>
@@ -107,29 +110,29 @@
             </div>
         </div>
         
-        <div class="divider"></div>
+                  <div class="divider"></div>
         
-        <div class="class-section">
-            <div class="section-title">Класс обслуживания</div>
-            <div class="class-option" onclick="selectClass('Эконом')">
-                <input type="radio" name="class" id="economy" checked>
-                <label class="class-label" for="economy">Эконом</label>
-            </div>
-            <div class="class-option" onclick="selectClass('Комфорт')">
-                <input type="radio" name="class" id="comfort">
-                <label class="class-label" for="comfort">Комфорт</label>
-            </div>
-            <div class="class-option" onclick="selectClass('Бизнес')">
-                <input type="radio" name="class" id="business">
-                <label class="class-label" for="business">Бизнес</label>
-            </div>
-            <div class="class-option" onclick="selectClass('Первый класс')">
-                <input type="radio" name="class" id="first-class">
-                <label class="class-label" for="first-class">Первый класс</label>
-            </div>
-        </div>
-    </div>
-</div>
+                  <div class="class-section">
+                      <div class="section-title">Класс обслуживания</div>
+                      <div class="class-option" onclick="selectClass('Эконом')">
+                          <input type="radio" name="class" id="economy" checked>
+                          <label class="class-label" for="economy">Эконом</label>
+                      </div>
+                      <div class="class-option" onclick="selectClass('Комфорт')">
+                          <input type="radio" name="class" id="comfort">
+                          <label class="class-label" for="comfort">Комфорт</label>
+                      </div>
+                      <div class="class-option" onclick="selectClass('Бизнес')">
+                          <input type="radio" name="class" id="business">
+                          <label class="class-label" for="business">Бизнес</label>
+                      </div>
+                      <div class="class-option" onclick="selectClass('Первый класс')">
+                          <input type="radio" name="class" id="first-class">
+                          <label class="class-label" for="first-class">Первый класс</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
           <!-- ------------------ Это выпадающий окно выбора пасс. и класс конец------------------ -->
         
           <div class="form-group">
