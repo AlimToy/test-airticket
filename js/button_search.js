@@ -11,7 +11,7 @@ document.getElementById("findTicketBtn").addEventListener("click", async functio
     return;
   }
 
-  const API_KEY = "e2d";
+  const API_KEY = "6d0b0a84dc83869915adca41653430cf";
   const API_URL = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates";
 
   const params = new URLSearchParams({
