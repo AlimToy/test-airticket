@@ -16,6 +16,50 @@ border: 1px solid #ccc
 
 .form-group {
   width: 200px;
+}
+
+/* .form-group {
+  position: relative;
+  margin-bottom: 20px;
+  max-width: 400px;
+} */
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+ul.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+ul.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+ul.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+#flightSearchForm {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0;
+  gap: 5px;
+}
+
+.form-group input {
+  padding: 10px 10px;
 
 }
 
