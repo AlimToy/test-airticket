@@ -44,14 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Закрытие dropdown при клике вне его
         document.addEventListener('click', function(event) {
-            if (!elements.dropdownBtn.contains(event.target) {
+            if (!elements.dropdownBtn.contains(event.target) && !elements.dropdownContent.contains(event.target)) {
                 closeDropdown();
             }
         });
     }
 
     // Функции
-    function toggleDropdown() {
+    function toggleDropdown(event) {
+        event.stopPropagation();
         elements.dropdownContent.classList.toggle('show');
         elements.arrow.classList.toggle('rotate');
     }
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function changePassengerCount(change, type) {
         state.passengers[type] += change;
         
-        // Убраны все ограничения (можно выбирать отрицательные значения и любое количество младенцев)
+        // Минимальное значение 0
         if (state.passengers[type] < 0) state.passengers[type] = 0;
         
         updateCounters();
